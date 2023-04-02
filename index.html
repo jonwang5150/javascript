@@ -10,9 +10,27 @@
 
 <body>
     <h1>JavaScript</h1>
-    <script src="./index.js">
+    <script>
+        /** 
+         * let/var/const 用法
+         * 圓面積
+        *圓周率
+        **/
+        const PI = 3.1415926;
+        let radius = 10;
 
-
+        let area = radius ** 2 * PI;
+        console.log(area);
+        // 區域
+        if (radius >= 10) {
+            let radius = "5";
+            area = radius ** 2 * PI;
+            console.log(typeof (area));
+        }
+        const result = "半徑為" + radius + "面積為" + area
+        console.log(typeof (result));
+        document.write("<h1>" + result + "</h1>");
+        alert(result);
 
     </script>
 </body>
