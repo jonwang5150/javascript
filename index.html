@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <style>
+        .date {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>JavaScript</h1>
+    <p class="date"></p>
+    <h1 style="padding: 12px;color:blue;">大樂透號碼</h1>
+    <h3>開獎日期:<span class="date"></span></h3>
+    <div class="lotto-number">
+        <p>
+        <ul>
+            <li>開獎中.....</li>
+        </ul>
+        </p>
+    </div>
+    <button id="start" type="button" onclick="lottoClick()">開始</button>
     <script src="./index.js"></script>
+    <script src="./lotto.js"></script>
 
-    </script>
 </body>
 
 </html>
