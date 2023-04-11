@@ -92,8 +92,8 @@ function getlotto(start, end, count = 6) {
 
 
 // 使用for 迴圈取值,姓名跟email輸出
-for (let i = 0; i < users.length; i++) {
-    //document.write(`${users[i].name}<br>${users[i].email}<br>`)
-}
+// for (let i = 0; i < users.length; i++) {
+//     //document.write(`${users[i].name}<br>${users[i].email}<br>`)
+// }
 
 //users.forEach(user => document.write(`${user.name}-${user.email}<br>`))

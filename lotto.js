@@ -6,15 +6,22 @@ element.innerText = element.innerText;
 //更改HTML
 element.innerHTML = `<span style="color:b">${element.innerText}</span>`
 
-const dateEl = document.querySelector("h3 .date"); //或是"span.date"
-dateEl.innerText = "2023/4/6";
-console.log(dateEl);
-
 
 const dateEls = document.querySelectorAll(".date");
 console.log(dateEls);
 dateEls.forEach(x => x.innerText = getToday());
-dateEls[0].innerHTML = ""  //.remove()也可以
+dateEls[0].innerHTML = getTime();
+dateEls[0].setAttribute("style", "color:black;fontsize=16")
+showTime()
+
+
+function showTime() {
+    dateEls[0].innerText = getTime();
+
+    setTimeout(() => {
+        showTime();
+    }, 1000);
+}
 
 // 取得今天日期
 function getToday() {
@@ -25,8 +32,22 @@ function getToday() {
 
     return `${year}/${month}/${date}`
 }
+// 取得時分秒跟年月日
+function getTime(fullTime = true) {
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let date = now.getDate();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = String(now.getSeconds()).padStart(2, "0");
 
+    if (fullTime) {
+        return `${year}/${month}/${date} ${hours}:${minutes}:${seconds}`;
+    }
 
+    return `${year}/${month}/${date}`;
+}
 // const startEl = document.querySelector("#start");
 // console.log(startEl);
 // startEl.innerText = "開獎!";
@@ -37,15 +58,30 @@ function getToday() {
 
 function lottoClick() {
     let lottos = [];
-    const lottoEl = document.querySelector(".lotto-number ul");
+    const lottoEl = document.querySelector(".lotto-number");
     lottoEl.innerHTML = "";
     for (let i = 0; i < 5; i++) {
         lotto = getlotto(start, end);
         lottos.push(lotto);
     }
 
+    console.log(lottos);
+    let htmlText = "<table border=1>";
     for (let i = 0; i < lottos.length; i++) {
-        lottoEl.innerHTML += (`<li style=${i % 2 == 0 ? "color:red" : "color:blue"}>${lottos[i].join(",")}</li>`)
+        htmlText += "<tr>";
+        for (let j = 0; j < lottos[i].length; j++) {
+            htmlText += `<td>${lottos[i][j]}</td>`
+        }
+        htmlText += "</tr>";
     }
+    htmlText += "</table>"
+
+    console.log(htmlText);
+    lottoEl.innerHTML = htmlText
+
+
+    // for (let i = 0; i < lottos.length; i++) {
+    //     lottoEl.innerHTML += (`<li style=${i % 2 == 0 ? "color:black" : "color:blue"}>${lottos[i].join(",")}</li>`)
+    // }
 
 }
