@@ -10,18 +10,20 @@ element.innerHTML = `<span style="color:b">${element.innerText}</span>`
 const dateEls = document.querySelectorAll(".date");
 console.log(dateEls);
 dateEls.forEach(x => x.innerText = getToday());
-dateEls[0].innerHTML = getTime();
 dateEls[0].setAttribute("style", "color:black;fontsize=16")
 showTime()
-
+click = false;
 
 function showTime() {
     dateEls[0].innerText = getTime();
-
     setTimeout(() => {
         showTime();
+        if (!click) {
+            lottoClick();
+        }
     }, 1000);
 }
+
 
 // 取得今天日期
 function getToday() {
@@ -58,6 +60,7 @@ function getTime(fullTime = true) {
 
 function lottoClick() {
     let lottos = [];
+    click = true;
     const lottoEl = document.querySelector(".lotto-number");
     lottoEl.innerHTML = "";
     for (let i = 0; i < 5; i++) {
